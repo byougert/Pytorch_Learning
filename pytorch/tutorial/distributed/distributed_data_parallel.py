@@ -12,7 +12,7 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 
 
 def main_work(rank, world_size):
-    dist.init_process_group(Backend.NCCL, rank=rank, world_size=world_size)
+    dist.init_process_group(Backend.NCCL, rank=rank, world_size=world_size, init_method="tcp://10.10.80.97:23456")
     model = nn.Linear(10, 10).to(rank)
     ddp_model = DDP(model, device_ids=[rank])
     loss_fn = nn.MSELoss()
