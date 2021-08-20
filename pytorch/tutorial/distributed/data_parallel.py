@@ -50,10 +50,7 @@ def __main():
 
     for batch in dataloader:
         batch = batch.to(device)
-        output = model(
-
-
-            batch)
+        output = model(batch)
         print("Outside: input size", batch.size(),
               "output_size", output.size())
 
